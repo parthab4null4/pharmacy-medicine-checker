@@ -1,26 +1,49 @@
-def medicine_paracetamol():
+def paracetamol_medicine():
     return "Available"
 
-def exit_command():
+medicines = {
+    "paracetamol": paracetamol_medicine
+}
+
+def search_medicines():
+    medicine = input("Enter medicine's name: ").strip().lower()
+    
+    if medicine in medicines:
+        print(medicines[medicine]())
+
+    else:
+        print("Not available.")
+    
+def exit_program():
+    print("See you soon!")
     return True
 
-medicines = {
-    "paracetamol": medicine_paracetamol,
-    "exit": exit_command
-    }
+menu = {
+    "1": search_medicines,
+    "2": exit_program
+}
 
 while True:
-    medicine = input("Enter medicine name: ").strip().lower()
+    print("\nPharmacy Medicine Checker.")
+    print("Click <1> for Search Medicines.")
+    print("Click <2> for Exit")
 
-    if medicine in medicines:
-        result = medicines[medicine]()
+    choice = input("Enter your option: ").strip()
+
+    if choice in menu:
+        result = menu[choice]()
 
         if result is True:
-            print("See you soon!")
             break
 
-        elif result is not None:
-            print(result)
-
     else: 
-        print("Not available")
+        print("Invalid option taken.")
+
+
+
+
+
+    
+
+
+    
